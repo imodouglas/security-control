@@ -1,6 +1,11 @@
 <?php
 
     class Db {
+        // private $dbHost = "localhost";
+        // private $dbName = "security_control";
+        // private $dbUser = "root";
+        // private $dbPass = "";
+
         private $dbHost = "localhost";
         private $dbName = "easywebs_scontrol";
         private $dbUser = "easywebs_user";

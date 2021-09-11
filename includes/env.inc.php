@@ -1,8 +1,12 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
     $companyName = "Security Control";
     $companyPhone = "08012345678";
     $companyEmail = "info@securitycontrol.com";
+    // $rootURL = "http://security-control.ew/";
     $rootURL = "https://security-control.easywebsite.ltd/";
 
 
