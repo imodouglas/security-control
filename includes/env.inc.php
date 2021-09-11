@@ -3,7 +3,7 @@
     $companyName = "Security Control";
     $companyPhone = "08012345678";
     $companyEmail = "info@securitycontrol.com";
-    $rootURL = "http://security-control.ew/";
+    $rootURL = "http://security-control.easywebsite.ltd/";
 
 
     if(isset($_SESSION['user_session'])){
