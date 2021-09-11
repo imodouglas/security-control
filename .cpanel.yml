@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/easywebs/security-control.easywebsite.ltd
+    - /bin/cp -R * $DEPLOYPATH

@@ -1,0 +1,292 @@
+$faded-primary: #dbf8d4;
+$primary-color: #1054b9;
+$secondary-color: #08295c;
+
+$faded-danger: #f8d4dd;
+$danger-color: #e60e39;
+$danger-color-active: #b00b2c;
+
+html,
+body {
+  height: 100%;
+}
+
+a {
+  color: $primary-color;
+  &:link {
+    color: $primary-color;
+    text-decoration: none;
+  }
+  &:visited {
+    color: $primary-color;
+    text-decoration: none;
+  }
+  &:hover {
+    color: #555;
+    text-decoration: none;
+  }
+}
+
+label {
+  font-size: 12px;
+}
+
+.p10 {
+  padding: 10px !important;
+}
+
+.p5 {
+  padding: 5px !important;
+}
+
+.m0 {
+  margin: 0 !important;
+}
+
+.mb10 {
+  margin-bottom: 10px !important;
+}
+
+.bottom-line {
+  border-bottom: #ccc thin solid;
+}
+
+.white-border {
+  border: #fff thin solid !important;
+  &-right {
+    border-right: #fff thin solid !important;
+  }
+}
+
+.header {
+  min-height: 100vh;
+  background: url("../../assets/images/header.jpg");
+  background-position: center center;
+  background-size: cover;
+  &-home {
+    background: #fff;
+    min-height: 100vh;
+  }
+  &-title {
+    font-size: 38px;
+    font-weight: 400;
+    color: #fff;
+  }
+  &-sub-title {
+    font-size: 28px;
+    font-weight: 400;
+    color: #ccc;
+    margin-bottom: 30px;
+  }
+  &-title-banner {
+    background: $faded-primary;
+    border-bottom: $primary-color 2px solid;
+  }
+  &-danger-banner {
+    background: $faded-danger;
+    border-bottom: $danger-color 2px solid;
+  }
+  &-gray-banner {
+    background: #f0f0f0;
+    border-bottom: #333 2px solid;
+  }
+}
+
+.menu {
+  &-container {
+    color: #fff !important;
+    padding: 40px 15px;
+    background: #222;
+    border-radius: 5px;
+    box-shadow: #ccc 3px 3px 4px;
+  }
+  &-item {
+    display: block;
+    width: 100% !important;
+    padding: 10px;
+    color: #fff !important;
+    border-bottom: #777 thin solid;
+    text-decoration: none;
+    &:hover {
+      background: #333;
+      text-decoration: none;
+    }
+    > i {
+      margin-right: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .menu {
+    &-container {
+      display: none;
+    }
+    &-button {
+      display: block !important;
+    }
+  }
+}
+
+.flexBox {
+  padding: 20px;
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.section {
+  padding: 30px 10px;
+  min-height: 85vh;
+}
+
+.navbar-bg {
+  background: $secondary-color !important;
+}
+
+.navbar-brand {
+  color: #fff !important;
+  &:hover {
+    color: #ccc !important;
+  }
+}
+
+.navbar-toggler {
+  border: 1px solid #fff !important;
+}
+
+.wallet-card {
+  padding: 30px 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: #ccc 2px 3px 4px;
+  margin: 5px;
+  &-balance {
+    @extend .wallet-card;
+    background: $danger-color;
+    color: #fff;
+    &:hover {
+      background: $danger-color-active;
+    }
+  }
+  &-investment {
+    @extend .wallet-card;
+    background: $primary-color;
+    color: #fff;
+    &:hover {
+      background: $secondary-color;
+    }
+  }
+  &-referral {
+    @extend .wallet-card;
+    background: #c27f04;
+    color: #fff;
+    &:hover {
+      background: #865905;
+    }
+  }
+  &-complete {
+    @extend .wallet-card;
+    background: #555;
+    color: #fff;
+    &:hover {
+      background: #333;
+    }
+  }
+}
+
+.balance-text {
+  font-size: 36px;
+  color: yellow;
+}
+
+// POP-UPS
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.9;
+  position: absolute;
+}
+
+.modal {
+  &-overlay {
+    @extend .overlay;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3000;
+    display: none;
+  }
+  &-container {
+    @extend .flexBox;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3001;
+    display: none;
+  }
+  &-card {
+    padding: 10px;
+    background: #fff;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 5px;
+    box-shadow: #444 3px 3px 4px;
+  }
+}
+
+.pending-color {
+  color: #9b1f0a;
+}
+.complete-color {
+  color: $secondary-color;
+}
+.gray-color {
+  color: #444;
+}
+.white-color {
+  color: #fff !important;
+}
+.clickable {
+  cursor: pointer;
+}
+
+.pending-bg {
+  background: #9b1f0a;
+  color: #fff;
+}
+
+.complete-bg {
+  background: $secondary-color;
+  color: #fff;
+}
+
+.footer {
+  background: #111;
+  color: #ccc;
+  padding: 20px;
+}
+
+.investment {
+  &-card {
+    padding: 20px 10px;
+    border: #ccc thin solid;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: #ccc 0px 2px 4px;
+    > h1,
+    h2,
+    h3 {
+      font-family: sans-serif;
+    }
+    &-item {
+      border-bottom: #ccc thin solid;
+      margin-bottom: 10px !important;
+    }
+  }
+}
