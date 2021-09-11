@@ -8,9 +8,7 @@ class Visitor extends Config {
         $query->execute([$fname, $address, $visiting, $phone, time(), $created_by]);
         if($query){
             return $this->conn()->lastInsertId();
-        } else {
-            return false;
-        }
+        } else { return false; }
     }
 
     /** Update Visitor Model */
