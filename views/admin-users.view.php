@@ -10,7 +10,7 @@
 
     if(isset($_POST['add-user'])){
         $password = $user->rand_string(8);
-        $data = $user->doCreateUser($_POST['fname'], $_POST['mname'], $_POST['lname'], $_POST['email'], $_POST['phone'], md5($password), $_POST['role']);
+        $data = $user->doCreateUser($_POST['fname'], $_POST['mname'], $_POST['lname'], $_POST['email'], $_POST['phone'], $password, $_POST['role']);
         if($data !== false){
             $msg = "Hello ".$_POST['fname']."\r\n\r\nYour account has been created successfully. Please find below your login details.\r\n\r\nEmail: ".$_POST['email']."\r\nPassword: ".$password."\r\n\r\nBest regards!\r\n$companyName";
             $mail = $mailer->sendMail($companyEmail, $_POST['email'], "Your account has been created!", $msg, $companyName);
