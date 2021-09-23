@@ -14,7 +14,7 @@
         $data = $visitor->doCreate($_POST['fname'], $_POST['address'], $_POST['visiting'], $_POST['phone'], $userId);
         if($data !== false){
             $msg = "Hi!\r\n\r\nYou have a visitor with the following details.\r\n\r\nName: ".$_POST['fname']."\r\nAddress: ".$_POST['address']."\r\nPhone No.: ".$_POST['phone']."\r\n\r\nPlease login to your dashboard on ".$rootURL." to accept or deny. \r\n\r\n$companyName Team!";
-            $mail = $mailer->sendMail($companyEmail, $userEmail, "Hello! You have a visitor.", $msg, $companyName);
+            $mail = $mailer->sendMail($userData['email'], $userEmail, "Hello! You have a visitor.", $msg, $userData['fname']." ".$userData['lname']);
             if($mail !== false){
                 echo "<script> alert('Visitor added!'); window.location='".$rootURL."home' </script>";
             }
