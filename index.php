@@ -29,6 +29,15 @@
                 return 'views/index.view.php';
             }
         }
+
+        /** Admin Authentication */
+        function securityAuth($url){
+            if(isset($_SESSION['security_session']) || isset($_SESSION['admin_session'])){
+                return $url;
+            } else {
+                return 'views/index.view.php';
+            }
+        }
         
 
         /** Index Page */
@@ -46,9 +55,9 @@
          * REGULAR USER ROUTES BEGINS HERE
          */
 
-        /** Homepage after login */
+        /** Security Homepage after login */
         route('/home', function(){ 
-            $url = userAuth('views/home.view.php');
+            $url = securityAuth('views/home.view.php');
             include $url;
         });
 
@@ -57,28 +66,17 @@
             $url = userAuth('views/profile.view.php');
             include $url;
         });
-
-        /** User Investments */
-        route('/investments', function(){ 
-            $url = userAuth('views/investments.view.php');
-            include $url;
-        });
-
-        /** User Wallet */
-        route('/wallet', function(){ 
-            $url = userAuth('views/wallet.view.php');
-            include $url;
-        });
-
-        /** User Referrals */
-        route('/referrals', function(){ 
-            $url = userAuth('views/referrals.view.php');
-            include $url;
-        });
-
+        
         /** Reset password page */
         route('/reset-password', function(){ 
             $url = 'views/reset-password.view.php';
+            include $url;
+        });
+
+
+        /** User profile page */
+        route('/user', function(){ 
+            $url = userAuth('views/user-home.view.php');
             include $url;
         });
 
@@ -98,18 +96,6 @@
             include $url;
         });
 
-        /** Manage Investments Page */
-        route('/admin/investments', function(){ 
-            $url = adminAuth('views/admin-investments.view.php');
-            include $url;
-        });
-
-        route('/admin/investments/(.+)/?', function($id){ 
-            $id = $id;
-            $url = adminAuth('views/admin-investment.view.php');
-            include $url;
-        });
-
         /** Manage Users Page */
         route('/admin/users', function(){ 
             $url = adminAuth('views/admin-users.view.php');
@@ -121,13 +107,6 @@
         route('/admin/user/(.+)/?', function($id){ 
             $id = $id;
             $url = adminAuth('views/admin-user.view.php');
-            include $url;
-        });
-
-
-        /** Manage Payouts */
-        route('/admin/payouts', function(){ 
-            $url = adminAuth('views/admin-payouts.view.php');
             include $url;
         });
 

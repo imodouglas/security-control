@@ -48,6 +48,18 @@ class VisitorController extends Visitor {
         return $data;
     }
 
+    /** Get All Visitor Users Count */
+    public function getUserVisitorCount($id, $start, $end){
+        $data = $this->userVisitorCount($id, $start, $end);
+        return $data;
+    }
+
+    /** Get All Visitor Users Data */
+    public function getUserVisitors($id, $start, $end){
+        $data = $this->userVisitors($id, $start, $end);
+        return $data;
+    }
+
     /** Signin */
     public function doSignin($id){
         $data = $this->signin($id);
@@ -57,6 +69,19 @@ class VisitorController extends Visitor {
     /** Signout */
     public function doSignout($id){
         $data = $this->signout($id);
+        return $data;
+    }
+
+    /** Approve Visitor */
+    public function doApproveVisitor($visitorId, $userId){
+        $data = $this->approveVisitor($visitorId, $userId);
+        return $data;
+    }
+
+
+    /** Reject Visitor */
+    public function doRejectVisitor($visitorId, $userId){
+        $data = $this->rejectVisitor($visitorId, $userId);
         return $data;
     }
 

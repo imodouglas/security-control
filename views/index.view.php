@@ -16,7 +16,7 @@
                 echo "<script> window.location = '".$rootURL."home'; </script>";
             } else if($result['role'] == 'staff'){
                 $_SESSION['user_session'] = $result['id'];
-                echo "<script> window.location = '".$rootURL."home'; </script>";
+                echo "<script> window.location = '".$rootURL."user'; </script>";
             }
         } else {
 

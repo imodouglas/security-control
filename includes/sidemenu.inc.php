@@ -9,7 +9,7 @@
         </a> 
     </div>
     <?php if(isset($_SESSION['user_session'])){ ?>
-      <a href="<?php echo $rootURL; ?>home" class="menu-item"> <i class="fas fa-tachometer-alt"></i> Dashboard </a>
+      <a href="<?php echo $rootURL; ?>user" class="menu-item"> <i class="fas fa-tachometer-alt"></i> Dashboard </a>
       <!-- <a href="<?php echo $rootURL; ?>investments" class="menu-item"> <i class="fas fa-chart-line"></i> Investments </a>
       <a href="<?php echo $rootURL; ?>wallet" class="menu-item"> <i class="fas fa-wallet"></i> Wallet </a>
       <a href="<?php echo $rootURL; ?>referrals" class="menu-item"> <i class="fas fa-cog"></i> Referrals </a> -->
@@ -18,7 +18,8 @@
         else if(isset($_SESSION['admin_session']))
       { 
     ?>
-      <a href="<?php echo $rootURL; ?>home" class="menu-item"> <i class="fas fa-tachometer-alt"></i> Dashboard </a>
+      <a href="<?php echo $rootURL; ?>home" class="menu-item"> <i class="fas fa-tachometer-alt"></i> Admin Dashboard </a>
+      <a href="<?php echo $rootURL; ?>user" class="menu-item"> <i class="fas fa-users"></i> My Dashboard </a>
       <a href="<?php echo $rootURL; ?>admin/users" class="menu-item"> <i class="fas fa-users"></i> Users </a>
       <!-- <a href="<?php echo $rootURL; ?>admin/investments" class="menu-item"> <i class="fas fa-chart-line"></i> Investments </a>
       <a href="<?php echo $rootURL; ?>admin/payouts" class="menu-item"> <i class="fas fa-wallet"></i> Payouts </a> -->
@@ -28,7 +29,8 @@
         else if(isset($_SESSION['security_session']))
       { 
     ?>
-      <a href="<?php echo $rootURL; ?>admin" class="menu-item"> <i class="fas fa-tachometer-alt"></i> Dashboard </a>
+      <a href="<?php echo $rootURL; ?>home" class="menu-item"> <i class="fas fa-tachometer-alt"></i> Security Dashboard </a>
+      <a href="<?php echo $rootURL; ?>user" class="menu-item"> <i class="fas fa-users"></i> My Dashboard </a>
       <!-- <a href="<?php echo $rootURL; ?>admin/users" class="menu-item"> <i class="fas fa-users"></i> Users </a> -->
       <!-- <a href="<?php echo $rootURL; ?>admin/investments" class="menu-item"> <i class="fas fa-chart-line"></i> Investments </a>
       <a href="<?php echo $rootURL; ?>admin/payouts" class="menu-item"> <i class="fas fa-wallet"></i> Payouts </a> -->

@@ -37,3 +37,33 @@
         $data = $visitor->doSignout($_POST['id']);
         echo json_encode($data);
     }
+    
+
+    if(isset($_POST['visitor'], $_POST['user'], $_POST['cmd']) && $_POST['cmd'] == "accept-visitor"){
+        $uData = $user->getUser($_POST['user']);
+        if($userSession == $uData['id']){
+            $data = $visitor->doApproveVisitor($_POST['visitor'], $_POST['user']);
+            $vData = $visitor->getDataById($_POST['visitor']);
+            $officer = $user->getUser($vData['created_by']);
+            $msg = "Hello ".$officer['fname']."\r\nPlease allow ".$vData['fname']." in to see me, and I approve of this visit.\r\n\r\nBest Regards,\r\n".$uData['fname']." ".$uData['lname'];
+            $mailer->sendMail($uData['email'], $officer['email'], "Visit accepted!", $msg, $uData['fname']." ".$uData['lname']);
+        } else {
+            $data = false;
+        }
+        echo json_encode($data);
+    }
+
+
+    if(isset($_POST['visitor'], $_POST['user'], $_POST['cmd']) && $_POST['cmd'] == "reject-visitor"){
+        $uData = $user->getUser($_POST['user']);
+        if($userSession == $uData['id']){
+            $data = $visitor->doRejectVisitor($_POST['visitor'], $_POST['user']);
+            $vData = $visitor->getDataById($_POST['visitor']);
+            $officer = $user->getUser($vData['created_by']);
+            $msg = "Hello ".$officer['fname']."\r\nPlease do not allow ".$vData['fname']." in, and I do not approve of this visit.\r\n\r\nBest Regards,\r\n".$uData['fname']." ".$uData['lname'];
+            $mailer->sendMail($uData['email'], $officer['email'], "Visit rejected!", $msg, $uData['fname']." ".$uData['lname']);
+        } else {
+            $data = false;
+        }
+        echo json_encode($data);
+    }

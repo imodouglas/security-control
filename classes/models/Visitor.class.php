@@ -55,6 +55,22 @@ class Visitor extends Config {
         return $data;
     }
 
+    /** Get User Visitors Count Model */
+    protected function userVisitorCount($id, $start, $end){
+        $query = $this->conn()->prepare("SELECT * FROM visitors WHERE visiting = ? AND (created_at BETWEEN ? AND ?)");
+        $query->execute([$id, $start, $end]);
+        $data = $query->rowCount();
+        return $data;
+    }
+
+    /** Get User Visitors Model */
+    protected function userVisitors($id, $start, $end){
+        $query = $this->conn()->prepare("SELECT * FROM visitors WHERE visiting = ? AND (created_at BETWEEN ? AND ?)");
+        $query->execute([$id, $start, $end]);
+        $data = $this->allResults($query);
+        return $data;
+    }
+
     /** Get All Users Model */
     protected function allVisits(){
         $query = $this->conn()->prepare("SELECT * FROM visitors");
@@ -103,6 +119,28 @@ class Visitor extends Config {
     protected function delete($id){
         $query = $this->conn()->prepare("DELETE FROM visitors WHERE id = ?");
         $query->execute([$id]);
+        if($query){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /** Approve Visitor */
+    protected function approveVisitor($visitorId, $userId){
+        $query = $this->conn()->prepare("UPDATE visitors SET status = ? WHERE id = ? AND visiting = ?");
+        $query->execute(['approved', $visitorId, $userId]);
+        if($query){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /** Reject Visitor */
+    protected function rejectVisitor($visitorId, $userId){
+        $query = $this->conn()->prepare("UPDATE visitors SET status = ? WHERE id = ? AND visiting = ?");
+        $query->execute(['rejected', $visitorId, $userId]);
         if($query){
             return true;
         } else {
